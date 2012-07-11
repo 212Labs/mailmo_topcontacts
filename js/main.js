@@ -1,11 +1,12 @@
 render_results = function(data) {
   var results = data["results"];
-  results.sort(function(a,b) { return b["value"] - a["value"]; })
+  results.sort(function(a,b) { return b["value"] - a["value"]; });
   
   // Top answer is probably your own email
-  results = results.slice(1, 12)
-  var data = results.map(function(item, index) { return [item["value"], index]; })
-  var labels = results.map(function(item, index) { return [index, item["_id"]]; })
+  results = results.slice(1, 12);
+  results.reverse();
+  var data = results.map(function(item, index) { return [item["value"], index]; });
+  var labels = results.map(function(item, index) { return [index, item["_id"]]; });
   
   $.plot($("#content"), [
         {
